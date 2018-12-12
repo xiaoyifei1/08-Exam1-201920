@@ -3,13 +3,13 @@ Exam 1, problem 1.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Yifei Xiao.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
 # -----------------------------------------------------------------------------
-# TODO: 2. Right-click on the  src  folder and
+# DONE: 2. Right-click on the  src  folder and
 #              Mark Directory as ... Sources Root,
 #          if you have not already done so.
 # -----------------------------------------------------------------------------
@@ -101,10 +101,28 @@ def problem1(square, thickness, window):
       :type window:    rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.  SEE THE PICTURES in the PDF!
+    # DONE: 3. Implement and test this function.  SEE THE PICTURES in the PDF!
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
+    square.attach_to(window)
+    point=square.center
+    x=point.x
+    y=point.y
+    start=rg.Point(x-square.length_of_each_side/2,y)
+    end=rg.Point(x,y+square.length_of_each_side)
 
+    center=end
+    circle=rg.Circle(end,square.length_of_each_side/2)
+    circle.attach_to(window)
+    circle.fill_color=square.fill_color
+    circle.outline_thickness=thickness
+
+    L = rg.Line(start, end)
+    L.color = square.outline_color
+    L.thickness = thickness
+    L.attach_to(window)
+
+    window.render()
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
